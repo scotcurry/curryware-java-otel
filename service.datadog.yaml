@@ -1,0 +1,24 @@
+schema-version: v2.2
+dd-service: curryware-java-otel
+team: curryware-team
+application: otel
+tier: "1"
+type: web
+lifecycle: "production"
+languages:
+  - java
+contacts:
+  - type: slack
+    contact: https://currywareinc.slack.com/archives/C081XSU95NW
+  - email:
+    contact: scotcurry4@gmail.com
+links:
+  - name: Confluence Page
+    type: code
+    url: https://curryware.atlassian.net/wiki/spaces/currywarej/overview
+  - name: Source
+    type: repo
+    url: https://github.com/scotcurry/curryware-java-otel
+  - name: Documentation
+    type: doc
+    url: https://github.com/scotcurry/curryware-java-otel/blob/master/README.md
