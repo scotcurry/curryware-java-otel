@@ -11,14 +11,25 @@
         <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
     </appender>
 
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>./logs/chucklog.txt</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} -%kvp- %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <!-- LOG everything at INFO level -->
     <root level="info">
-<!--        <appender-ref ref="OpenTelemetry" />-->
+        <appender-ref ref="OpenTelemetry" />
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
     </root>
 
     <logger name="org.curryware" level="trace" additivity="false">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
     </logger>
 
 </configuration>
