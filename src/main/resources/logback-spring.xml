@@ -5,8 +5,15 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
+    <appender name="OpenTelemetry" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <immediateFlush>true</immediateFlush>
+        <captureExperimentalAttributes>true</captureExperimentalAttributes>
+        <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+    </appender>
+
     <!-- LOG everything at INFO level -->
     <root level="info">
+<!--        <appender-ref ref="OpenTelemetry" />-->
         <appender-ref ref="STDOUT" />
     </root>
 

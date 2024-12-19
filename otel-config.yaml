@@ -1,0 +1,41 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  datadog:
+    traces:
+      span_name_as_resource_name: true
+      trace_buffer: 500
+    hostname: "otelcol-docker"
+    api:
+      key: ${DD_API_KEY}
+      site: datadoghq.com
+  debug:
+
+processors:
+  batch:
+    timeout: 10s
+
+connectors:
+  datadog/connector:
+
+service:
+  telemetry:
+    logs:
+      level: info
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [datadog/connector]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+    logs:
+      receivers: [otlp]
+      exporters: [debug,datadog]
