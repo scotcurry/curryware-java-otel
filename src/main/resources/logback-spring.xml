@@ -13,6 +13,7 @@
 
 <!--    The file path gets set in the application.properties file-->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/var/log/chuck/chuckjoke.log</file>
         <append>true</append>
         <immediateFlush>true</immediateFlush>
         <encoder>
@@ -22,7 +23,7 @@
 
     <!-- LOG everything at INFO level -->
     <root level="info">
-<!--        <appender-ref ref="OpenTelemetry" />-->
+        <appender-ref ref="OpenTelemetry" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
@@ -30,7 +31,7 @@
     <logger name="org.curryware" level="trace" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
-<!--        <appender-ref ref="OpenTelemetry" />-->
+        <appender-ref ref="OpenTelemetry" />
     </logger>
 
 </configuration>
